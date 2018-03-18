@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <BrowserRouter>
     <div>
-    <Route exact path="/" component={Form} />
+    <Route exact path="/form" component={Form} />
     </div>
     </BrowserRouter>
 
