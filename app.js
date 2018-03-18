@@ -101,7 +101,7 @@ app.post('/RestFulRouting/:user_id/distroy', function(req, res) {
 // AJAX FUNCTIONS FOR REACT
 
 app.get("/loadallusers/", function(req, res) {
-   if (process.env.NODE_ENV != 'production') {
+   if (process.env.NODE_ENV !== 'production') {
       res.setHeader('Access-Control-Allow-Origin', 'https://webdevbootcamp-mazenoncloud9.c9users.io:8081');
       res.setHeader('Access-Control-Allow-Credentials', "true");
    }
