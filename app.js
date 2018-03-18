@@ -102,13 +102,9 @@ app.post('/RestFulRouting/:user_id/distroy', function(req, res) {
 
 app.get("/loadallusers/", function(req, res) {
 
-   if (process.env.NODE_ENV === 'production') {
-      console.log(process.env.NODE_ENV)
-   }
-   else {
-      res.setHeader('Access-Control-Allow-Origin', 'https://webdevbootcamp-mazenoncloud9.c9users.io:8081');
-      res.setHeader('Access-Control-Allow-Credentials', "true");
-   }
+   //res.setHeader('Access-Control-Allow-Origin', 'https://webdevbootcamp-mazenoncloud9.c9users.io:8081');
+   //res.setHeader('Access-Control-Allow-Credentials', "true");
+
    people.find(function(err, succ) {
 
       if (err) {
