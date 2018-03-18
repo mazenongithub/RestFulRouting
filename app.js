@@ -18,7 +18,23 @@ mongoose.connect(url);
 var restfulSchema = new mongoose.Schema({ firstname: String, lastname: String });
 //RestFul - 1 - Index Load all values
 var people = mongoose.model("people", restfulSchema);
+app.get("/", function(req, res) {
 
+   people.find(function(err, succ) {
+
+      if (err) {
+         console.log("you have an error");
+      }
+      else {
+
+
+
+         res.render("indextemplate", { people: succ, mode: 2 })
+      }
+
+   }); // end of find   
+
+});
 //Restful - 2 - New Form
 app.get('/RestFulRouting/new', function(req, res) {
    people.find(function(err, succ) {
