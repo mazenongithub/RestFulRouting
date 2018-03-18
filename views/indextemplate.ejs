@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>My First Express App</title>
+</head>
+
+<body>
+<form action="" method="" id="myform">
+
+<table width="95%" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <th colspan="4" scope="col">Basic Express App - 7 RestFulRoutes</th>
+  </tr>
+  <tr>
+    <td width="6%">&nbsp;</td>
+    <th colspan="2">&nbsp;</th>
+    <td width="24%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td> User ID:</td>
+    <td><select id="user_id" name="user_id" style="width:100%;margin:auto"> 
+    <% if (mode == 2) { %>
+    <option value="">Insert New </option>
+    <% }  %>
+    <% people.forEach(function(person) { %>
+      <option value="<%= person._id %>"> <%= person.firstname + " " + person.lastname %>   </option>
+      <% }) %></option>
+    </select></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>First Name:</td>
+    <td>
+    <% if (mode==2) { %>
+    <input type="text" name="firstname" id="firstname" style="width:100%"  />
+    <% } else if (mode==4) { %>
+    <input type="text" name="firstname" id="firstname" value="<%= people[0].firstname %>" style="width:100%"/>
+    <% } %>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>Last Name:</td>
+    <td><% if (mode == 2) { %> 
+    <input type="text" name="lastname" id="lastname" style="width:100%" />
+    <% } else if (mode == 4) { %>
+    <input type="text" name="lastname" id= "lastname" style="width:100%" value="<%= people[0].lastname %>"/>
+    <% } %>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td width="19%">&nbsp;</td>
+    <td width="51%">
+    <% if (mode == 2) { %> 
+    <input type="submit" id="btncreate" value="Insert Route" style="width:90%" />
+    <% } %>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>
+      <% if (mode == 2) { %>
+      <input type="submit" id="btnedit" value="Edit Route" style="width:90%" />
+      <% } %></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>
+      <% if (mode == 2) { %>
+      <input type="submit" id="btnshow" value="Show Route" style="width:90%" />
+      <% } %></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>
+      <% if (mode == 2) { %>
+      <input type="submit" id="btndelete" value="Delete Route" style="width:90%" />
+      <% } %>
+      </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <th><a href="/">Home</a></th>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</form>
+<script>
+var insertbutton= document.getElementById("btncreate");
+var editbutton = document.getElementById("btnedit");
+var showbutton = document.getElementById("btnshow");
+var deletebutton = document.getElementById("btndelete");
+var homebutton = document.getElementById("btnhome");
+insertbutton.addEventListener("click",function () {
+var myform = document.getElementById("myform");
+myform.action = "/RestFulRouting/";
+myform.method = "post";
+})
+editbutton.addEventListener("click",function () {
+var myform = document.getElementById("myform");
+var user_id = document.getElementById("user_id").value;
+myform.action = "/RestFulRouting/" + user_id + "/edit";
+myform.method = "post";
+})
+
+showbutton.addEventListener("click",function () {
+var myform = document.getElementById("myform");
+var user_id = document.getElementById("user_id").value;
+myform.action = "/RestFulRouting/" + user_id +"/show";
+myform.method = "get";
+})
+
+
+deletebutton.addEventListener("click",function () {
+var myform = document.getElementById("myform");
+var user_id = document.getElementById("user_id").value;
+myform.action = "/RestFulRouting/" + user_id + "/distroy";
+myform.method = "post";
+})
+
+
+</script>
+
+<br/><br/>
+</body>
+
+</html>
