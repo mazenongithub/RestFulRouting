@@ -2,7 +2,7 @@ import axios from 'axios';
 import { LOAD_USER } from './loaduser';
 axios.defaults.withCredentials = true;
 export const loadUser = () => async dispatch => {
-    const url = "";
+    const url = " ";
     if (process.env.NODE_ENV === 'production') {
         url = "/loadallusers"
     }
