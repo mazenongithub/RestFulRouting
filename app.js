@@ -7,6 +7,12 @@ var app = express()
 
 app.use(bodyParser.json());
 // JavaScript Document
+app.use(function(req, res, next) {
+   res.header("Access-Control-Allow-Origin", "https://webdevbootcamp-mazenoncloud9.c9users.io:8082");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+   res.header("Access-Control-Allow-Credentials", true);
+   next();
+});
 
 
 //7 Restful Routes are: 1) index /app-name get, list all values 2) new /app-name/new get show new form,  3) create /app-name post create item then redirect
@@ -36,7 +42,7 @@ app.get('/RestFulRouting/new', function(req, res) {
 });
 
 //Restful - 3 - Create a new Value then Redirect
-app.post('/RestFulRouting', function(req, res) {
+app.post('/RestFulRouting/', function(req, res) {
 
    var firstname = req.body.firstname;
    var lastname = req.body.lastname;
