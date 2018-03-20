@@ -15,7 +15,8 @@ class PostsNew extends Component {
   }
 
   onSubmit(values) {
-    this.props.createPost(values);
+    console.log(values);
+
   }
 
   render() {
@@ -29,7 +30,7 @@ class PostsNew extends Component {
 <title>Basic MERN Program</title>
 </head>
 <body>
-<form onSubmit={handleSubmit(this.onSubmit.bind(this))} method="post">
+<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 <table width="50%" border="0" cellspacing="0" cellpadding="10" style={table_margin}>
   <tr>
     <th colspan="3">Basic Program</th>
