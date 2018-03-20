@@ -62,7 +62,7 @@ app.post('/RestFulRouting', function(req, res) {
          res.send("You have an error");
       }
       else {
-         res.resend(succ);
+         res.send(succ);
       }
    });
 
