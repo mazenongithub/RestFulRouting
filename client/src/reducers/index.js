@@ -3,6 +3,6 @@ import userReducer from './loadReducer';
 import { reducer as formReducer } from 'redux-form';
 
 export default combineReducers({
-    user: userReducer
-
+    user: userReducer,
+    form: formReducer
 });
