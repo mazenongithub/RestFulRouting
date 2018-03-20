@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
@@ -43,7 +43,7 @@ class Landing extends Component {
     <td>User ID:</td>
     <td colspan="2">
     <ul>
- 
+    {this.renderSurveys()}
     </ul>
    </td>
   </tr>
@@ -57,4 +57,8 @@ class Landing extends Component {
     } //end of render 
 } //end of component 
 
-export default Landing;
+function mapStateToProps({ user }) {
+    return { user };
+}
+
+export default connect(mapStateToProps)(Landing);

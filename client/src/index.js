@@ -5,6 +5,5 @@ import { createStore, applyMiddleware } from 'redux';
 import App from './components/app';
 import reducers from './reducers'
 import reduxThunk from 'redux-thunk';
-import promise from 'redux-promise';
-const store = createStore(reducers, {}, applyMiddleware(promise));
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 ReactDom.render(<Provider store={store}><App /></Provider>, document.querySelector("#root"));
