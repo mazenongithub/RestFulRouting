@@ -35,8 +35,8 @@ app.get('/RestFulRouting/new', function(req, res) {
 
 //Restful - 3 - Create a new Value then Redirect
 app.post('/RestFulRouting', function(req, res) {
-   var firstname = req.body.firstname;
-   var lastname = req.body.lastname;
+   var firstname = req.firstname;
+   var lastname = req.lastname;
    var newValue = { firstname: firstname, lastname: lastname };
    people.create(newValue, function(err, succ) {
       if (err) {
