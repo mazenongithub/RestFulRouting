@@ -5,6 +5,7 @@ var cors = require('cors')
 var app = express()
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 
 //7 Restful Routes are: 1) index /app-name get, list all values 2) new /app-name/new get show new form,  3) create /app-name post create item then redirect
@@ -35,8 +36,8 @@ app.get('/RestFulRouting/new', function(req, res) {
 
 //Restful - 3 - Create a new Value then Redirect
 app.post('/RestFulRouting', function(req, res) {
-   var firstname = req.firstname;
-   var lastname = req.lastname;
+   var firstname = req.body.firstname;
+   var lastname = req.body.lastname;
    var newValue = { firstname: firstname, lastname: lastname };
    people.create(newValue, function(err, succ) {
       if (err) {
