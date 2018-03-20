@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { LOAD_USER } from './loaduser';
-import { CREATE_POST } from './createpost';
-
+export const CREATE_POST = 'create_post';
+export const LOAD_USER = 'load_user';
+export const SHOW_USER = 'show_user';
 axios.defaults.withCredentials = true;
 //https://webdevbootcamp-mazenoncloud9.c9users.io:8080
 export const loadUser = () => async dispatch => {
