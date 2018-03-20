@@ -31,37 +31,18 @@ class PostsNew extends Component {
 </head>
 <body>
 <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-<table width="50%" border="0" cellspacing="0" cellpadding="10" style={table_margin}>
-  <tr>
-    <th colspan="3">Basic Program</th>
-  </tr>
-    <tr>
-    <th colspan="3"><Link to="/">Back to Landing</Link></th>
-  </tr>
-  <tr>
-    <td width="16%">First Name</td>
-    <td colspan="2">
+
     <Field 
      name="firstname" 
      component={this.renderField} 
      />
      
-     </td>
-  </tr>
-  <tr>
-    <td>Last Name</td>
-    <td colspan="2"><Field 
+     
+    <Field 
      name="lastname" 
      component={this.renderField} 
-     /> </td>
-     
-  </tr>
-  <tr>
-    <td></td>
-    <th width="39%"><button type="submit"> Submit </button></th>
-    <th width="45%"><button id="btndelete"> Delete </button></th>
-  </tr>
-</table>
+     /> 
+    <button type="submit"> Submit </button>
 </form>
 </body>
 </html>
