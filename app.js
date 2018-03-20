@@ -54,6 +54,7 @@ app.get('/RestFulRouting/new', function(req, res) {
 
 //Restful - 3 - Create a new Value then Redirect
 app.post('/RestFulRouting', function(req, res) {
+   console.log(req.body);
    var firstname = req.body.firstname;
    var lastname = req.body.lastname;
    var newValue = { firstname: firstname, lastname: lastname };
@@ -62,7 +63,7 @@ app.post('/RestFulRouting', function(req, res) {
          console.log("You have an error");
       }
       else {
-         res.redirect("/");
+         res.resend(succ);
       }
    });
 
