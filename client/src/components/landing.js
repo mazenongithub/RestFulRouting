@@ -37,7 +37,9 @@ class Landing extends Component {
     <th colspan="3">Basic Program</th>
   </tr>
     <tr>
-  <th colspan="3"><Link to="/posts/new">Add A Post</Link> </th>
+  <th colspan="3"><ul> 
+  <li> <Link to="reactrouter/RestFulRouting">Add A Post</Link> </li> 
+ <li> <Link to="reactrouter/:id/show">Show A Post</Link> </li> </ul> </th>
   </tr>
   <tr>
     <td>User ID:</td>

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import Landing from './landing';
 import PostsNew from './form'
+import ShowUser from './showuser';
 class App extends Component {
 
   componentDidMount() {
@@ -15,8 +16,9 @@ class App extends Component {
       <BrowserRouter>
     <div>
     <Switch>
-    <Route exact path="/posts/new" component={PostsNew} />
-    <Route exact path="/" component={Landing} />
+    <Route exact path="/reactrouter/:id/show" component={ShowUser} />
+    <Route exact path="/reactrouter/restfulrouting" component={PostsNew} />
+    <Route exact path="/index" component={Landing} />
     </Switch>
     </div>
     </BrowserRouter>
