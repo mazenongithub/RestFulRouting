@@ -1,9 +1,14 @@
-// JavaScript Document
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
-app.set("view engine", "ejs");
+var cors = require('cors')
+var app = express()
+
+
 app.use(bodyParser.json());
+// JavaScript Document
+
+
 //7 Restful Routes are: 1) index /app-name get, list all values 2) new /app-name/new get show new form,  3) create /app-name post create item then redirect
 //4) show  /app-name/:id get show info about one item // 5) edit app-name/:id/edit show edit form for one value get 
 //6)  update app-name/:id put update value then redirect 7) delete app-name/:id destroy delete then redirect
@@ -14,8 +19,10 @@ var restfulSchema = new mongoose.Schema({ firstname: String, lastname: String })
 //RestFul - 1 - Index Load all values
 var people = mongoose.model("people", restfulSchema);
 
+
 //Restful - 2 - New Form
 app.get('/RestFulRouting/new', function(req, res) {
+
    people.find(function(err, succ) {
       if (err) {
          console.log("You have an error in your statement");
@@ -30,6 +37,7 @@ app.get('/RestFulRouting/new', function(req, res) {
 
 //Restful - 3 - Create a new Value then Redirect
 app.post('/RestFulRouting', function(req, res) {
+
    var firstname = req.body.firstname;
    var lastname = req.body.lastname;
    var newValue = { firstname: firstname, lastname: lastname };
@@ -96,23 +104,7 @@ app.post('/RestFulRouting/:user_id/distroy', function(req, res) {
 // AJAX FUNCTIONS FOR REACT
 
 app.get("/loadallusers/", function(req, res) {
-   res.setHeader('Access-Control-Allow-Origin', 'https://webdevbootcamp-mazenoncloud9.c9users.io:8081');
-   res.setHeader('Access-Control-Allow-Credentials', "true");
-   people.find(function(err, succ) {
 
-      if (err) {
-         console.log("you have an error");
-      }
-      else {
-
-         res.send(succ)
-      }
-
-   }); // end of find   
-
-});
-
-app.get("/loadallusers/", function(req, res) {
 
    people.find(function(err, succ) {
 
@@ -127,5 +119,14 @@ app.get("/loadallusers/", function(req, res) {
    }); // end of find   
 
 });
+
+if (process.env.NODE_ENV === 'production') {
+   app.use(express.static('client/build'));
+   const path = require('path');
+   app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+   })
+}
+
 
 app.listen(process.env.PORT)
