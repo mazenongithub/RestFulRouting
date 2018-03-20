@@ -88,4 +88,5 @@ export default reduxForm({
   form: 'PostsNewForm'
 })(
 
-  connect(null, { createPost })(PostsNew));
+
+connect(null, { createPost })(PostsNew));
