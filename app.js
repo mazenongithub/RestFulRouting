@@ -3,27 +3,8 @@ var app = express();
 var bodyParser = require("body-parser");
 var cors = require('cors')
 var app = express()
-
-
-var allowCrossDomain = function(req, res, next) {
-   res.header('Access-Control-Allow-Origin', 'https://webdevbootcamp-mazenoncloud9.c9users.io:8081');
-   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-   res.header('Access-Control-Allow-Headers', 'Content-Type');
-   res.header('Access-Control-Allow-Credentials', 'true');
-   next();
-}
-
-app.set("view engine", "ejs");
-
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// JavaScript Document
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 
 //7 Restful Routes are: 1) index /app-name get, list all values 2) new /app-name/new get show new form,  3) create /app-name post create item then redirect
@@ -120,7 +101,6 @@ app.post('/RestFulRouting/:user_id/distroy', function(req, res) {
 // AJAX FUNCTIONS FOR REACT
 
 app.get("/loadallusers/", function(req, res) {
-
 
    people.find(function(err, succ) {
 
