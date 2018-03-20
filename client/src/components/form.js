@@ -22,7 +22,7 @@ class PostsNew extends Component {
 
   render() {
 
-    const { handleSubmit, history } = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <html xmlns="http://www.w3.org/1999/xhtml">
@@ -32,7 +32,7 @@ class PostsNew extends Component {
 <title>Basic MERN Program</title>
 </head>
 <body>
-<form onSubmit={handleSubmit(this.onSubmit.bind(this),history)}>
+<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 <table width="95%" border="0" cellspacing="0" cellpadding="10">
   <tr>
     <th colspan="4" scope="col">Create New User:</th>
