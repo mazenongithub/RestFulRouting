@@ -46,7 +46,7 @@ app.post('/RestFulRouting', function(req, res) {
          console.log("You have an error");
       }
       else {
-         res.redirect("/");
+         res.send(succ);
       }
    });
 
