@@ -16,7 +16,7 @@ class App extends Component {
     <Switch>
     <Route exact path="/reactrouter/:id/show" component={ShowUser} />
     <Route exact path="/reactrouter/restfulrouting" component={PostsNew} />
-    <Route exact path="/index" component={Landing} />
+    <Route exact path="/" component={Landing} />
     </Switch>
     </div>
     </BrowserRouter>

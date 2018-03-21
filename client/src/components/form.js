@@ -14,7 +14,7 @@ class PostsNew extends Component {
 
   onSubmit(values) {
     this.props.createPost(values, () => {
-      this.props.history.push("/index");
+      this.props.history.push("/");
     });
 
 
@@ -40,7 +40,7 @@ class PostsNew extends Component {
   <tr>
     <td width="19%">&nbsp;</td>
     <td width="33%">&nbsp;</td>
-    <td width="25%"><Link to="/index">Landing Page </Link></td>
+    <td width="25%"><Link to="/">Landing Page </Link></td>
     <td width="23%">&nbsp;</td>
   </tr><tr>
     <td>&nbsp;</td>

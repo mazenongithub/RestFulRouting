@@ -8,7 +8,7 @@ var app = express()
 app.use(bodyParser.json());
 // JavaScript Document
 app.use(function(req, res, next) {
-   res.header("Access-Control-Allow-Origin", "https://webdevbootcamp-mazenoncloud9.c9users.io:8082");
+   res.header("Access-Control-Allow-Origin", "https://webdevbootcamp-mazenoncloud9.c9users.io:8081");
    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
    res.header("Access-Control-Allow-Credentials", true);
    next();
