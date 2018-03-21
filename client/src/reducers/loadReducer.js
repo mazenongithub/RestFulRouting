@@ -8,7 +8,7 @@ export default function(state = {}, action) {
             return action.payload || false;
         case CREATE_POST:
             console.log(action);
-            return state|| false;
+            return action.payload || false;
         default:
             return state;
     }
