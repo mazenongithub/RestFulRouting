@@ -5,11 +5,9 @@ import * as actions from '../actions';
 import Landing from './landing';
 import PostsNew from './form'
 import ShowUser from './showuser';
-class App extends Component {
 
-  componentDidMount() {
-    this.props.loadUser();
-  }
+
+class App extends Component {
 
   render() {
     return (

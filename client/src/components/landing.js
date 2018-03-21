@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { loadUser } from '../actions';
+import _ from 'lodash';
 
 
 const table_margin = {
@@ -9,21 +11,18 @@ const table_margin = {
 
 class Landing extends Component {
 
-    renderSurveys() {
+    componentDidMount() {
+        this.props.loadUser();
 
-        var returnValue = [];
-        for (var i = 0; i < this.props.user.length; i++) {
-            var user_id = this.props.user[i]._id;
-            var firstname = this.props.user[i].firstname;
-            var lastname = this.props.user[i].lastname;
-            returnValue.push(<li>{user_id} {firstname} {lastname} </li>);
-        }
+    }
 
-        //return this.props.user.map(myuser => {
-        //return (<option value={myuser._id}> {myuser.firstname}  {myuser.lastname} </option>)
-        // });
-        return (returnValue);
+    renderUsers() {
+        return _.map(this.props.user, myUsers => {
+            return (<li> {myUsers._id} {myUsers.firstname} {myUsers.lastname} </li>)
+        })
+
     };
+
     render() {
         return (
             <html xmlns="http://www.w3.org/1999/xhtml">
@@ -38,14 +37,14 @@ class Landing extends Component {
   </tr>
     <tr>
   <th colspan="3"><ul> 
-  <li> <Link to="reactrouter/RestFulRouting">Add A Post</Link> </li> 
+  <li> <Link to="/reactrouter/restfulrouting">Add A Post</Link> </li> 
  <li> <Link to="reactrouter/:id/show">Show A Post</Link> </li> </ul> </th>
   </tr>
   <tr>
     <td>User ID:</td>
     <td colspan="2">
     <ul>
-    {this.renderSurveys()}
+    {this.renderUsers()}
     </ul>
    </td>
   </tr>
@@ -59,8 +58,7 @@ class Landing extends Component {
     } //end of render 
 } //end of component 
 
-function mapStateToProps({ user }) {
-    return { user };
+function mapStateToProps(state) {
+    return { user: state.user };
 }
-
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps, { loadUser })(Landing);
