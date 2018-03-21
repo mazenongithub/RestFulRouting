@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { fetchUser } from '../actions';
 
 class ShowUser extends Component {
+    componentDidMount() {
+        var user_id = this.props.match.params.id;
+        console.log(user_id);
+        this.props.fetchUser(user_id);
+    }
 
     render() {
 
@@ -31,4 +37,7 @@ class ShowUser extends Component {
 
 } //End Component
 
-export default ShowUser;
+function mapStateToProps(state) {
+    return { user: state.user };
+}
+export default connect(mapStateToProps, { fetchUser })(ShowUser);
