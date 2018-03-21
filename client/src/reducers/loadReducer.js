@@ -8,7 +8,8 @@ export default function(state = {}, action) {
             return action.payload || false;
         case CREATE_POST:
             console.log(action);
-            return state || false;
+            return state;
+            //return { ...state, [action.payload.data.id]: action.payload.data }
         default:
             return state;
     }
