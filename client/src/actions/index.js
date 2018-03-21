@@ -10,11 +10,22 @@ export const loadUser = () => async dispatch => {
     dispatch({ type: LOAD_USER, payload: res.data });
 };
 
-export const createPost = (values, callback) => async dispatch => {
+export function createPost(values, callback) {
+    const req = axios.post("https://webdevbootcamp-mazenoncloud9.c9users.io:8080/RestFulRouting", values)
+        .then(() => callback())
+    return {
+        type: CREATE_POST,
+        payload: req
+    }
+}
 
-    const res = await axios.post("https://webdevbootcamp-mazenoncloud9.c9users.io:8080/RestFulRouting", values);
-    callback();
-    dispatch(
+//export const createPost = (values, callback) => async dispatch => {
 
-        { type: CREATE_POST, payload: res.data });
-};
+//const res = await axios.post("https://webdevbootcamp-mazenoncloud9.c9users.io:8080/RestFulRouting", values);
+
+//dispatch(
+
+//{ type: CREATE_POST, payload: res.data });
+//callback();
+
+//}
