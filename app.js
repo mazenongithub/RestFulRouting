@@ -59,28 +59,28 @@ app.post('/RestFulRouting/', function(req, res) {
 });
 
 //Restful -Show - 4 - Display one Item by ID
-app.get('/RestFulRouting/:user_id/show', function(req, res) {
+app.get('/restfulrouting/:user_id/show', function(req, res) {
    var user_id = req.params.user_id;
    people.find({ _id: user_id }, function(err, succ) {
       if (err) {
 
       }
       else {
-         res.render("indextemplate", { people: succ, mode: 4 });
-         console.log(succ);
+
+         res.send(succ);
       }
    });
 
 });
 
 //Restful - 5 - Edit load edit form
-app.get('/RestFulRouting/:user_id/edit', function(req, res) {
+app.get('/restfulrouting/:user_id/edit', function(req, res) {
    var user_id = req.params.user_id;
    res.redirect("/RestFulRouting/" + user_id + "/show");
 });
 
 //Restful -Show - 6 - Edit one value
-app.post('/RestFulRouting/:user_id/edit', function(req, res) {
+app.post('/restfulrouting/:user_id/edit', function(req, res) {
    var user_id = req.params.user_id;
    var firstname = req.body.firstname;
    var lastname = req.body.lastname;
@@ -90,13 +90,13 @@ app.post('/RestFulRouting/:user_id/edit', function(req, res) {
          console.log("Update was not successful");
       }
       else {
-         res.redirect("/RestFulRouting/" + user_id + "/edit");
+         res.redirect("/restfulrouting/" + user_id + "/edit");
       }
    });
 });
 
 //Restful -Show - 7 - Destroy
-app.post('/RestFulRouting/:user_id/distroy', function(req, res) {
+app.post('/restrulrouting/:user_id/distroy', function(req, res) {
    var user_id = req.params.user_id;
    people.findByIdAndRemove(user_id, function(err) {
       if (err) {
