@@ -8,7 +8,7 @@ var app = express()
 app.use(bodyParser.json());
 // JavaScript Document
 app.use(function(req, res, next) {
-   res.header("Access-Control-Allow-Origin", "https://webdevbootcamp-mazenoncloud9.c9users.io:8083");
+   res.header("Access-Control-Allow-Origin", "https://webdevbootcamp-mazenoncloud9.c9users.io:8082");
    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
    res.header("Access-Control-Allow-Credentials", true);
    next();
@@ -24,8 +24,6 @@ mongoose.connect(url);
 var restfulSchema = new mongoose.Schema({ firstname: String, lastname: String });
 //RestFul - 1 - Index Load all values
 var people = mongoose.model("people", restfulSchema);
-
-
 
 
 //Restful - 2 - New Form
