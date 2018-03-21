@@ -59,15 +59,14 @@ app.post('/RestFulRouting/', function(req, res) {
 });
 
 //Restful -Show - 4 - Display one Item by ID
-app.get('/RestFulRouting/:user_id/show', function(req, res) {
+app.get('/restfulrouting/:user_id/show', function(req, res) {
    var user_id = req.params.user_id;
    people.find({ _id: user_id }, function(err, succ) {
       if (err) {
 
       }
       else {
-         res.render("indextemplate", { people: succ, mode: 4 });
-         console.log(succ);
+         res.send(succ)
       }
    });
 
