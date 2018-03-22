@@ -22,11 +22,16 @@ class ShowUser extends Component {
             <table width="95%" border="0" cellspacing="0" cellpadding="10">
   <tr>
     <th width="24%" scope="col">First Name</th>
-    <td width="76%">{firstname}</td>
+    <td colspan="2"><input type="text" name="firstname" value={firstname} /></td>
   </tr>
   <tr>
     <th>Last Name</th>
-    <td>{lastname}</td>
+    <td colspan="2"><input type="text" name="lastname" value={lastname} /></td>
+  </tr>
+  <tr>
+    <th><button type="submit"> Delete </button></th>
+    <td width="22%"><button type="delete"> Edit </button></td>
+    <th width="54%"></th>
   </tr>
 </table>
 
