@@ -33,9 +33,10 @@ class PostsNew extends Component {
 </head>
 <body>
 <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-<table width="95%" border="0" cellspacing="0" cellpadding="10">
+<table width="95%" border="0" cellSpacing="0" cellPadding="10">
+<tbody>
   <tr>
-    <th colspan="4" scope="col">Create New User:</th>
+    <th colSpan="4" scope="col">Create New User:</th>
   </tr>
   <tr>
     <td width="19%">&nbsp;</td>
@@ -45,7 +46,7 @@ class PostsNew extends Component {
   </tr><tr>
     <td>&nbsp;</td>
     <td>First Name:</td>
-    <td colspan="2">    <Field 
+    <td colSpan="2">    <Field 
      name="firstname" 
      component={this.renderField} 
      /></td>
@@ -53,7 +54,7 @@ class PostsNew extends Component {
   <tr>
     <td>&nbsp;</td>
     <td>Last Name</td>
-    <td colspan="2"><Field 
+    <td colSpan="2"><Field 
      name="lastname" 
      component={this.renderField} 
      /> </td>
@@ -61,8 +62,9 @@ class PostsNew extends Component {
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td colspan="2"><button type="submit"> Submit </button></td>
+    <td colSpan="2"><button type="submit"> Submit </button></td>
   </tr>
+  </tbody>
 </table>
 </form>
 </body>

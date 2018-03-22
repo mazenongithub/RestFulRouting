@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions';
-
+import { Link } from 'react-router-dom';
 class ShowUser extends Component {
 
     componentDidMount() {
@@ -20,19 +20,21 @@ class ShowUser extends Component {
         return (
 
             <table width="95%" border="0" cellspacing="0" cellpadding="10">
+  <tbody>
   <tr>
     <th width="24%" scope="col">First Name</th>
-    <td colspan="2"><input type="text" name="firstname" value={firstname} /></td>
+    <td colSpan="2"><input type="text" name="firstname" value={firstname} /></td>
   </tr>
   <tr>
     <th>Last Name</th>
-    <td colspan="2"><input type="text" name="lastname" value={lastname} /></td>
+    <td colSpan="2"><input type="text" name="lastname" value={lastname} /></td>
   </tr>
   <tr>
-    <th><input type="button" value="Delete" /></th>
+    <th><input type="button" value="Delete"  /></th>
     <td width="22%"><input type="button" value="Edit" /> </td>
-    <th width="54%"></th>
+    <th width="54%"><Link to="/">  Landing </Link></th>
   </tr>
+  </tbody>
 </table>
 
 

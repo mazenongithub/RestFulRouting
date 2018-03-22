@@ -25,34 +25,29 @@ class Landing extends Component {
 
     render() {
         return (
-            <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Basic MERN Program</title>
-</head>
-<body>
-<table width="50%" border="0" cellspacing="0" cellpadding="10" style={table_margin}>
+
+            <table width="50%" border="0" cellSpacing="0" cellPadding="10" style={table_margin}>
+<tbody>
   <tr>
-    <th colspan="3">Basic Program</th>
+    <th colSpan="3">Basic Program</th>
   </tr>
     <tr>
-  <th colspan="3"><ul> 
+  <th colSpan="3"><ul> 
   <li> <Link to="/reactrouter/restfulrouting">Add A Post</Link> </li> 
  <li> <Link to="reactrouter/:id/show">Show A Post</Link> </li> </ul> </th>
   </tr>
   <tr>
     <td>User ID:</td>
-    <td colspan="2">
+    <td colSpan="2">
     <ul>
     {this.renderUsers()}
     </ul>
    </td>
   </tr>
- 
+ </tbody>
 </table>
 
-</body>
-</html>
+
 
         ) //end of return
     } //end of render 
