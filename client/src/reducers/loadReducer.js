@@ -1,4 +1,4 @@
-import { LOAD_USER, CREATE_POST, FETCH_USER } from '../actions/'
+import { LOAD_USER, CREATE_POST, FETCH_USER, DELETE_USER } from '../actions/'
 import _ from 'lodash'
 export default function(state = {}, action) {
     console.log(action.payload);
@@ -6,10 +6,13 @@ export default function(state = {}, action) {
         case LOAD_USER:
             return _.mapKeys(action.payload, '_id');
         case FETCH_USER:
-            return action.payload || false;
+            return (state, action.payload) || false;
         case CREATE_POST:
             console.log(action);
-            return action.payload || false;
+            return (state, action.payload) || false;
+        case DELETE_USER:
+            console.log(action);
+            return _.omit(state, action.payload) || false;
         default:
             return state;
     }
