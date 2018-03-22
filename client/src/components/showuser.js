@@ -29,8 +29,8 @@ class ShowUser extends Component {
     <td colspan="2"><input type="text" name="lastname" value={lastname} /></td>
   </tr>
   <tr>
-    <th><button type="submit"> Delete </button></th>
-    <td width="22%"><button type="delete"> Edit </button></td>
+    <th><input type="button" value="Delete" /></th>
+    <td width="22%"><input type="button" value="Edit" /> </td>
     <th width="54%"></th>
   </tr>
 </table>
