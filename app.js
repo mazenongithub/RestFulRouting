@@ -96,13 +96,16 @@ app.post('/restfulrouting/:user_id/edit', function(req, res) {
 });
 
 //Restful -Show - 7 - Destroy
-app.post('/restrulrouting/:user_id/distroy', function(req, res) {
+app.post('/restfulrouting/:user_id/distroy', function(req, res) {
    var user_id = req.params.user_id;
-   people.findByIdAndRemove(user_id, function(err) {
+   people.findByIdAndRemove(user_id, function(err, succ) {
       if (err) {
          console.log("There an is error in your program")
       }
-      res.redirect("/");
+      else {
+         res.send(succ);
+      }
+
    });
 
 })

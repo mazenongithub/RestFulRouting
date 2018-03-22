@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions';
+import { deleteUser } from '../actions';
 import { Link } from 'react-router-dom';
 class ShowUser extends Component {
 
@@ -8,7 +9,13 @@ class ShowUser extends Component {
         var user_id = this.props.match.params.id;
 
         this.props.fetchUser(user_id);
+    }
 
+    onDeleteClick() {
+        var user_id = this.props.match.params.id;
+        this.props.deleteUser(user_id, () => {
+            this.props.history.push("/");
+        });
     }
 
     render() {
@@ -30,7 +37,7 @@ class ShowUser extends Component {
     <td colSpan="2"><input type="text" name="lastname" value={lastname} /></td>
   </tr>
   <tr>
-    <th><input type="button" value="Delete" /></th>
+    <th><input type="button" value="Delete" onClick={this.onDeleteClick.bind(this)} /></th>
     <td width="22%"><input type="button" value="Edit" /> </td>
     <th width="54%"><Link to="/"> Landing </Link></th>
   </tr>
@@ -54,4 +61,4 @@ function mapStateToProps(state) {
     return { myuser: state.user };
 }
 
-export default connect(mapStateToProps, { fetchUser })(ShowUser);
+export default connect(mapStateToProps, { fetchUser, deleteUser })(ShowUser);
