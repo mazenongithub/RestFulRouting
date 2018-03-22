@@ -31,12 +31,13 @@ class Landing extends Component {
 <title>Basic MERN Program</title>
 </head>
 <body>
-<table width="50%" border="0" cellspacing="0" cellpadding="10" style={table_margin}>
+<table width="50%" border="0" cellSpacing="0" cellPadding="10" style={table_margin}>
+<tbody>
   <tr>
-    <th colspan="3">Basic Program</th>
+    <th colSpan="3">Basic Program</th>
   </tr>
     <tr>
-  <th colspan="3"><ul> 
+  <th colSpan="3"><ul> 
   <li> <Link to="/reactrouter/restfulrouting">Add A Post</Link> </li> 
  <li> <Link to="reactrouter/:id/show">Show A Post</Link> </li> </ul> </th>
   </tr>
@@ -48,7 +49,7 @@ class Landing extends Component {
     </ul>
    </td>
   </tr>
- 
+ </tbody>
 </table>
 
 </body>

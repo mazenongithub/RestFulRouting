@@ -20,7 +20,8 @@ class ShowUser extends Component {
         return (
 
             <table width="95%" border="0" cellSpacing="0" cellPadding="10">
-  <tr>
+            <tbody>
+            <tr>
     <th width="24%" scope="col">First Name</th>
     <td colSpan="2"><input type="text" name="firstname" value={firstname} /></td>
   </tr>
@@ -33,6 +34,7 @@ class ShowUser extends Component {
     <td width="22%"><input type="button" value="Edit" /> </td>
     <th width="54%"><Link to="/"> Landing </Link></th>
   </tr>
+  </tbody>
 </table>
 
 

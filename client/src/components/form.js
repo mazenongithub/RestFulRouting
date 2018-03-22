@@ -34,6 +34,7 @@ class PostsNew extends Component {
 <body>
 <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 <table width="95%" border="0" cellSpacing="0" cellPadding="10">
+<tbody>
   <tr>
     <th colSpan="4" scope="col">Create New User:</th>
   </tr>
@@ -63,6 +64,7 @@ class PostsNew extends Component {
     <td>&nbsp;</td>
     <td colSpan="2"><button type="submit"> Submit </button></td>
   </tr>
+  </tbody>
 </table>
 </form>
 </body>
