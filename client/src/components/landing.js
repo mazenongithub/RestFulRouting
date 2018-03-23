@@ -18,7 +18,7 @@ class Landing extends Component {
 
     renderUsers() {
         return _.map(this.props.user, myUsers => {
-            return (<li key={myUsers._id}> <Link to={`/reactrouter/${myUsers._id}/show`}>{myUsers.firstname}  {myUsers.lastname}</Link>  </li>)
+            return (<li key={myUsers._id}> <Link to={`/reactrouter/${myUsers._id}/show`}>{myUsers._id} {myUsers.firstname}  {myUsers.lastname}</Link>  </li>)
         })
 
     };

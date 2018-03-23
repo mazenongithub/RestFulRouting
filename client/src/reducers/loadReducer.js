@@ -8,7 +8,6 @@ export default function(state = {}, action) {
         case FETCH_USER:
             return (state, action.payload) || false;
         case CREATE_POST:
-            console.log(action);
             return (state, action.payload) || false;
         case DELETE_USER:
             console.log(action);
