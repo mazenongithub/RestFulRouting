@@ -97,10 +97,7 @@ function validate(values) {
 
 
 function mapStateToProps(state, ownProps) {
-    initialValues: {
-        firstname: ownProps.firstname
-        lastname: ownProps.lastname
-    }
+
     return { myuser: state.user };
 }
 export default reduxForm({
