@@ -90,7 +90,7 @@ app.post('/restfulrouting/:user_id/edit', function(req, res) {
          console.log("Update was not successful");
       }
       else {
-         res.redirect("/restfulrouting/" + user_id + "/edit");
+         res.send(succ);
       }
    });
 });

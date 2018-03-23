@@ -4,6 +4,7 @@ export const LOAD_USER = 'load_user';
 export const SHOW_USER = 'show_user';
 export const FETCH_USER = 'fetch_user';
 export const DELETE_USER = 'delete_user'
+export const EDIT_USER = 'edit_user'
 axios.defaults.withCredentials = true;
 //https://webdevbootcamp-mazenoncloud9.c9users.io:8080
 export const loadUser = () => async dispatch => {
@@ -37,4 +38,13 @@ export const deleteUser = (id, callback) => async dispatch => {
     dispatch(
 
         { type: DELETE_USER, payload: res.data });
+};
+
+export const editUser = (id, values, callback) => async dispatch => {
+
+    const res = await axios.post(`https://webdevbootcamp-mazenoncloud9.c9users.io:8080/restfulrouting/${id}/edit`, values);
+    callback();
+    dispatch(
+
+        { type: EDIT_USER, payload: res.data });
 };
