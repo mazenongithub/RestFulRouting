@@ -24,7 +24,7 @@ class ShowUser extends Component {
     onSubmit(values) {
         var user_id = this.props.match.params.id;
         this.props.editUser(user_id, values, () => {
-            this.props.history.push(`/reactrouter/${user_id}/show`);
+            this.props.history.push(`/`);
         });
     }
 

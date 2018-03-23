@@ -9,13 +9,13 @@ axios.defaults.withCredentials = true;
 //https://webdevbootcamp-mazenoncloud9.c9users.io:8080
 export const loadUser = () => async dispatch => {
 
-    const res = await axios.get("https://webdevbootcamp-mazenoncloud9.c9users.io:8080/loadallusers");
+    const res = await axios.get("/loadallusers");
     dispatch({ type: LOAD_USER, payload: res.data });
 };
 
 export const createPost = (values, callback) => async dispatch => {
 
-    const res = await axios.post("https://webdevbootcamp-mazenoncloud9.c9users.io:8080/RestFulRouting", values);
+    const res = await axios.post("/RestFulRouting", values);
     callback();
     dispatch(
 
@@ -24,7 +24,7 @@ export const createPost = (values, callback) => async dispatch => {
 
 export const fetchUser = (id) => async dispatch => {
 
-    const res = await axios.get(`https://webdevbootcamp-mazenoncloud9.c9users.io:8080/restfulrouting/${id}/show`);
+    const res = await axios.get(`/restfulrouting/${id}/show`);
 
     dispatch(
 
@@ -33,7 +33,7 @@ export const fetchUser = (id) => async dispatch => {
 
 export const deleteUser = (id, callback) => async dispatch => {
 
-    const res = await axios.post(`https://webdevbootcamp-mazenoncloud9.c9users.io:8080/restfulrouting/${id}/distroy`);
+    const res = await axios.post(`/restfulrouting/${id}/distroy`);
     callback();
     dispatch(
 
@@ -42,7 +42,7 @@ export const deleteUser = (id, callback) => async dispatch => {
 
 export const editUser = (id, values, callback) => async dispatch => {
 
-    const res = await axios.post(`https://webdevbootcamp-mazenoncloud9.c9users.io:8080/restfulrouting/${id}/edit`, values);
+    const res = await axios.post(`/restfulrouting/${id}/edit`, values);
     callback();
     dispatch(
 
