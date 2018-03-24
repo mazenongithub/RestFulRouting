@@ -12,6 +12,7 @@ class ShowUser extends Component {
         var user_id = this.props.match.params.id;
         this.props.fetchUser(user_id);
 
+
     }
 
     onDeleteClick() {
@@ -29,7 +30,17 @@ class ShowUser extends Component {
     }
 
     renderField(field) {
-        return (<div><input type="text" {...field.input} /> {field.meta.touched ? field.meta.error : ""} </div>)
+        return (<div><input type="text" {...field.input}  /> {field.meta.touched ? field.meta.error : ""} </div>)
+
+    }
+
+
+    constructor(props) {
+
+        super(props);
+
+
+        this.state = { firstname: '', lastname: '' }
 
     }
 
@@ -37,35 +48,51 @@ class ShowUser extends Component {
 
     render() {
         const { handleSubmit } = this.props;
-
         for (var i = 0; i < this.props.myuser.length; i++) {
-            var firstname = this.props.myuser[i].firstname
-            var lastname = this.props.myuser[i].lastname;
+            var fname = this.props.myuser[i].firstname
+            var lname = this.props.myuser[i].lastname;
+            this.setState({ firstname: { fname }, lastname: { lname } })
         }
 
+
         return (
+
+
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <table width="95%" border="0" cellSpacing="0" cellPadding="10">
             <tbody>
             <tr>
-    <th width="24%" scope="col">First Name: {firstname}</th>
+    <th width="24%" scope="col">First Name: </th>
     <td colSpan="2"><Field 
      name="firstname" 
-     component={this.renderField} 
-  
-     /> </td>
+     component={this.renderField}
+     value={this.state}
+     onChange ={(e)=>{
+     this.setState({[e.target.name]:e.target.value})
+      
+      }
+     }
+     />
+     </td>
   </tr>
   <tr>
-    <th>Last Name {lastname}</th>
+    <th>Last Name </th>
     <td colSpan="2"><Field 
      name="lastname" 
      component={this.renderField} 
+     value={this.state}
+     onClick={(e)=>{
+     
+     this.setState({[e.target.name]:e.target.value})
+         
+      }
+     }
      /></td>
   </tr>
   <tr>
     <th><input type="button" value="Delete" onClick={this.onDeleteClick.bind(this)} /></th>
         <td width="22%"><input type="submit" value="Edit" /> </td>
-    <th width="54%"><Link to="/"> Landing </Link></th>
+    <th width="54%"><input type="text" name="text"  value={this.state.firstname} /><Link to="/"> Landing </Link></th>
   </tr>
   </tbody>
 </table>
