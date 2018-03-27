@@ -5,6 +5,7 @@ import * as actions from '../actions';
 import Landing from './landing';
 import PostsNew from './form'
 import ShowUser from './showuser';
+import Master from './master'
 
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
     <Switch>
     <Route exact path="/reactrouter/:id/show" component={ShowUser} />
     <Route exact path="/reactrouter/restfulrouting" component={PostsNew} />
+    <Route exact path="/reactrouter/allusers" component={Master} />
     <Route exact path="/" component={Landing} />
     </Switch>
     </div>
