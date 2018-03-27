@@ -6,18 +6,11 @@ import { editUser } from '../actions';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 class ShowUser extends Component {
-    constructor(props) {
-        super(props);
-        var user_id = this.props.match.params.id;
-        this.props.fetchUser(user_id);
-        for (var i = 0; i < this.props.myuser.length; i++) {
-            var fname = this.props.myuser[i].firstname
-
-        }
-        this.state = { firstname: fname }
-    }
 
     componentDidMount() {
+
+        var user_id = this.props.match.params.id;
+        this.props.fetchUser(user_id);
 
     }
 
@@ -36,40 +29,43 @@ class ShowUser extends Component {
     }
 
     renderField(field) {
-        return (<div><input type="text" {...field.input}   /> {field.meta.touched ? field.meta.error : ""} </div>)
+        return (<div><input type="text" {...field.input} /> {field.meta.touched ? field.meta.error : ""} </div>)
 
     }
 
 
+
     render() {
         const { handleSubmit } = this.props;
-        for (var i = 0; i < this.props.myuser.length; i++) {
-            var fname = this.props.myuser[i].firstname
-            var lname = this.props.myuser[i].lastname;
 
+        for (var i = 0; i < this.props.myuser.length; i++) {
+            var firstname = this.props.myuser[i].firstname
+            var lastname = this.props.myuser[i].lastname;
         }
 
-
         return (
-
-
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <table width="95%" border="0" cellSpacing="0" cellPadding="10">
             <tbody>
             <tr>
-    <th width="24%" scope="col">{fname} {lname} </th>
-    <td colSpan="2">
-     </td>
+    <th width="24%" scope="col">First Name: {firstname}</th>
+    <td colSpan="2"><Field 
+     name="firstname" 
+     component={this.renderField} 
+  
+     /> </td>
   </tr>
   <tr>
-    <th>Last Name </th>
-    <td colSpan="2"></td>
+    <th>Last Name {lastname}</th>
+    <td colSpan="2"><Field 
+     name="lastname" 
+     component={this.renderField} 
+     /></td>
   </tr>
   <tr>
     <th><input type="button" value="Delete" onClick={this.onDeleteClick.bind(this)} /></th>
         <td width="22%"><input type="submit" value="Edit" /> </td>
-    <th width="54%"><input type="text"  value={this.state.firstname} 
-    onChange={event=>this.setState({firstname:event.target.value})} /><Link to="/"> Landing </Link></th>
+    <th width="54%"><Link to="/"> Landing </Link></th>
   </tr>
   </tbody>
 </table>
