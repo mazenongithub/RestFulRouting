@@ -9,7 +9,7 @@ axios.defaults.withCredentials = true;
 //https://webdevbootcamp-mazenoncloud9.c9users.io:8080
 export const loadUser = () => async dispatch => {
 
-    const res = await axios.get("https: //webdevbootcamp-mazenoncloud9.c9users.io:8080/loadallusers");
+    const res = await axios.get("https://webdevbootcamp-mazenoncloud9.c9users.io:8080/loadallusers");
     dispatch({ type: LOAD_USER, payload: res.data });
 };
 
