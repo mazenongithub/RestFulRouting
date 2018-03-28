@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import * as apiCalls from './api';
 import _ from 'lodash';
-import { createPost } from '../actions';
-//export const CREATE_POST = 'create_post';
 
 class Master extends Component {
     constructor(props) {
@@ -13,7 +11,7 @@ class Master extends Component {
             firstname: '',
             lastname: ''
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
 
@@ -25,13 +23,14 @@ class Master extends Component {
 
     async loadUsers() {
         let allusers = await apiCalls.fetchURL("https://webdevbootcamp-mazenoncloud9.c9users.io:8080/loadallusers");
+        console.log(allusers);
         let allmyusers = {};
         allusers.map((myusers) => {
             return allmyusers = [...allmyusers, myusers]
         })
 
         this.setState({ allusers: allmyusers });
-
+        console.log(this.state.allusers)
     }
 
     loadallusers() {
@@ -53,21 +52,11 @@ class Master extends Component {
     }
 
 
-
-    handleSubmit(e, values) {
-        e.preventDefault();
-        this.props.createPost(values, () => {
-            this.props.history.push("/");
-        });
-    }
-
-
-
     render() {
 
 
         return (
-            <form onSubmit={this.handleSubmit}>
+
             <table width="95%" border="0" cellPadding="5">
   <tbody>
   <tr>
@@ -87,11 +76,10 @@ class Master extends Component {
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><input type="submit" value="Submit" /><input type="button" value="Delete" id="btndelete" /></td>
+    <td><input type="button" value="Insert/Update" id="btninsert" /><input type="button" value="Delete" id="btndelete" /></td>
   </tr>
   </tbody>
-</table> 
-</form>
+</table>
 
 
 
