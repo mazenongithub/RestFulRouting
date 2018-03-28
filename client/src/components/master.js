@@ -42,8 +42,8 @@ class Master extends Component {
 
     async addUser(val) {
         let newUser = await apiCalls.createUser(val);
-        this.setState({ allusers: [...this.state.allusers, newUser] })
-
+        this.setState({ allusers: [...this.state.allusers, newUser], user_id: newUser._id, firstname: newUser.firstname, lastname: newUser.lastname })
+        //this.setState({ user_id: newUser._id })
     }
 
 
@@ -59,6 +59,7 @@ class Master extends Component {
         _.map(this.state.allusers, myUser => {
             if (myUser._id === this.state.user_id) {
                 this.setState({ firstname: myUser.firstname, lastname: myUser.lastname })
+
             }
 
         })
