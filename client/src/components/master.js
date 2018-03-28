@@ -24,18 +24,20 @@ class Master extends Component {
     handleClick() {
         var firstname = this.state.firstname;
         var lastname = this.state.lastname;
-        var user_id = this.state.user_id;
-        if (user_id.length > 0) {
-
+        var _id = this.state.user_id;
+        var values;
+        if (this.state.user_id) {
+            values = { _id, firstname, lastname }
+            this.editUser(values);
         }
         else {
 
 
-            var values = { firstname, lastname };
+            values = { firstname, lastname };
+
 
             //alert(values.firstname);
             this.addUser(values);
-
         }
 
     }
@@ -57,6 +59,13 @@ class Master extends Component {
 
     }
 
+    async editUser(val) {
+        let editUser = await apiCalls.createUser(val);
+        console.log(editUser);
+
+
+    }
+
 
     loadallusers() {
         return _.map(this.state.allusers, myUsers => {
@@ -66,8 +75,7 @@ class Master extends Component {
     };
 
     afterSetStateFinished() {
-        console.log(this.state.user_id);
-
+        console.log(this.state.user_id)
         if (this.state.user_id) {
 
             _.map(this.state.allusers, myUser => {

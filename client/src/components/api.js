@@ -20,7 +20,13 @@ export async function fetchURL(APIURL) {
 }
 
 export async function createUser(val) {
-    var APIURL = "https://webdevbootcamp-mazenoncloud9.c9users.io:8080/RestFulRouting"
+    var APIURL;
+    if (!val._id) {
+        APIURL = "https://webdevbootcamp-mazenoncloud9.c9users.io:8080/RestFulRouting"
+    }
+    else {
+        APIURL = "https://webdevbootcamp-mazenoncloud9.c9users.io:8080/restfulrouting/" + val._id + "/edit"
+    }
 
     return fetch(APIURL, {
             method: 'post',
