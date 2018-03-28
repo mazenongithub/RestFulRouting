@@ -24,9 +24,20 @@ class Master extends Component {
     handleClick() {
         var firstname = this.state.firstname;
         var lastname = this.state.lastname;
-        var values = { firstname, lastname };
-        //alert(values.firstname);
-        this.addUser(values);
+        var user_id = this.state.user_id;
+        if (user_id.length > 0) {
+
+        }
+        else {
+
+
+            var values = { firstname, lastname };
+
+            //alert(values.firstname);
+            this.addUser(values);
+
+        }
+
     }
     async loadUsers() {
         let allusers = await apiCalls.fetchURL("https://webdevbootcamp-mazenoncloud9.c9users.io:8080/loadallusers");
@@ -43,7 +54,7 @@ class Master extends Component {
     async addUser(val) {
         let newUser = await apiCalls.createUser(val);
         this.setState({ allusers: [...this.state.allusers, newUser], user_id: newUser._id, firstname: newUser.firstname, lastname: newUser.lastname })
-        //this.setState({ user_id: newUser._id })
+
     }
 
 
@@ -56,13 +67,25 @@ class Master extends Component {
 
     afterSetStateFinished() {
         console.log(this.state.user_id);
-        _.map(this.state.allusers, myUser => {
-            if (myUser._id === this.state.user_id) {
-                this.setState({ firstname: myUser.firstname, lastname: myUser.lastname })
 
-            }
+        if (this.state.user_id) {
 
-        })
+            _.map(this.state.allusers, myUser => {
+
+
+                if (myUser._id === this.state.user_id) {
+                    this.setState({ firstname: myUser.firstname, lastname: myUser.lastname })
+
+                }
+
+
+            })
+
+        }
+        else {
+
+            this.setState({ firstname: '', lastname: '' })
+        }
 
     }
 
