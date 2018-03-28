@@ -13,10 +13,10 @@ export const loadUser = () => async dispatch => {
     dispatch({ type: LOAD_USER, payload: res.data });
 };
 
-export const createPost = (values, callback) => async dispatch => {
+export const createPost = (values) => async dispatch => {
 
     const res = await axios.post("https://webdevbootcamp-mazenoncloud9.c9users.io:8080/RestFulRouting", values);
-    callback();
+    //callback();
     dispatch(
 
         { type: CREATE_POST, payload: res.data });
