@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import * as apiCalls from './api';
 import _ from 'lodash';
+import { reduxForm } from 'redux-form';
+import { createPost } from '../actions';
+//export const CREATE_POST = 'create_post';
 
 class Master extends Component {
     constructor(props) {
@@ -11,9 +14,21 @@ class Master extends Component {
             firstname: '',
             lastname: ''
         }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
     }
 
+    handleChange(event) {
+        this.setState({ value: event.target.value });
+    }
+
+    handleSubmit(values) {
+        this.createPost(values, () => {
+            this.props.history.push("/");
+        });
+
+    }
 
     componentDidMount() {
 
@@ -23,7 +38,6 @@ class Master extends Component {
 
     async loadUsers() {
         let allusers = await apiCalls.fetchURL("https://webdevbootcamp-mazenoncloud9.c9users.io:8080/loadallusers");
-        console.log(allusers);
         let allmyusers = {};
         allusers.map((myusers) => {
             return allmyusers = [...allmyusers, myusers]
@@ -33,11 +47,22 @@ class Master extends Component {
         console.log(this.state.allusers)
     }
 
+    //async addUser(val) {
+    //let newUser = await apiCalls.createUser(val);
+    // newUser.map((newuser, i) => {
+    //     var firstname = newuser.firstname;
+    //     var lastname = newuser.lastname;
+    //     var user_id = newuser.user_id;
+    //     this.setState({ firstname, lastname, user_id });
+    // })
+    //console.log(newUser)
+    // this.setState({ allusers: [...this.state.allusers, newUser] });
+    // }
+
     loadallusers() {
         return _.map(this.state.allusers, myUsers => {
             return (<option value={myUsers._id}>{myUsers.firstname} {myUsers.lastname} </option>)
         })
-
     };
 
     afterSetStateFinished() {
@@ -51,12 +76,17 @@ class Master extends Component {
 
     }
 
-
+    onSubmit(values, e) {
+        e.preventDefault();
+        this.props.createPost(values, () => {
+            this.props.history.push("/");
+        });
+    }
     render() {
-
+        const { handleSubmit } = this.props;
 
         return (
-
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <table width="95%" border="0" cellPadding="5">
   <tbody>
   <tr>
@@ -76,11 +106,11 @@ class Master extends Component {
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><input type="button" value="Insert/Update" id="btninsert" /><input type="button" value="Delete" id="btndelete" /></td>
+    <td><input type="submit" value="Submit" id="btninsert"  /><input type="button" value="Delete" id="btndelete" /></td>
   </tr>
   </tbody>
 </table>
-
+</form>
 
 
         ) // End Return
