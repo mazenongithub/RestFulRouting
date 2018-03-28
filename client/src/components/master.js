@@ -11,6 +11,7 @@ class Master extends Component {
             firstname: '',
             lastname: ''
         }
+        this.handleClick = this.handleClick.bind(this);
 
     }
 
@@ -20,7 +21,13 @@ class Master extends Component {
         this.loadUsers();
 
     }
-
+    handleClick() {
+        var firstname = this.state.firstname;
+        var lastname = this.state.lastname;
+        var values = { firstname, lastname };
+        //alert(values.firstname);
+        this.addUser(values);
+    }
     async loadUsers() {
         let allusers = await apiCalls.fetchURL("https://webdevbootcamp-mazenoncloud9.c9users.io:8080/loadallusers");
         console.log(allusers);
@@ -32,6 +39,13 @@ class Master extends Component {
         this.setState({ allusers: allmyusers });
         console.log(this.state.allusers)
     }
+
+    async addUser(val) {
+        let newUser = await apiCalls.createUser(val);
+        this.setState({ allusers: [...this.state.allusers, newUser] })
+
+    }
+
 
     loadallusers() {
         return _.map(this.state.allusers, myUsers => {
@@ -76,11 +90,10 @@ class Master extends Component {
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><input type="button" value="Insert/Update" id="btninsert" /><input type="button" value="Delete" id="btndelete" /></td>
+    <td><button onClick={this.handleClick}> Insert/Update </button> <input type="button" value="Delete" id="btndelete" /></td>
   </tr>
   </tbody>
 </table>
-
 
 
         ) // End Return
