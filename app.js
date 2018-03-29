@@ -85,16 +85,15 @@ app.post('/restfulrouting/:user_id/edit', function(req, res) {
    var firstname = req.body.firstname;
    var lastname = req.body.lastname;
    var newdata = { firstname: firstname, lastname: lastname };
-   people.findByIdAndUpdate(user_id, newdata, function(err, succ) {
-      if (err) {
-         console.log("Update was not successful");
-      }
-      else {
-         console.log(succ);
-         res.send(succ);
-      }
-   });
+   people.findByIdAndUpdate(user_id, newdata, { new: true })
+      .then(function(succ) {
+         res.json(succ);
+      })
+      .catch(function(err) {
+         res.send(err);
+      })
 });
+
 
 //Restful -Show - 7 - Destroy
 app.post('/restfulrouting/:user_id/distroy', function(req, res) {

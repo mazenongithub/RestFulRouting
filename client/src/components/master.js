@@ -61,7 +61,8 @@ class Master extends Component {
 
     async editUser(val) {
         let editUser = await apiCalls.createUser(val);
-        console.log(editUser);
+        this.setState({ user_id: editUser._id, firstname: editUser.firstname, lastname: editUser.lastname });
+
 
 
     }
