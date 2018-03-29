@@ -46,14 +46,14 @@ class Master extends Component {
     handleDelete() {
         var user_id = this.state.user_id;
         this.deleteUser(user_id);
-        //alert("delete ")
     }
 
     async deleteUser(user_id) {
         let deleteUser = await apiCalls.deleteUser(user_id);
-        console.log(deleteUser)
-        this.setState({ firstname: '', lastname: "", user_id: "" });
-
+        const allusers = this.state.allusers.filter(myusers => myusers._id !== deleteUser._id);
+        console.log(allusers);
+        this.setState({ firstname: '', lastname: "", user_id: "", allusers: {} });
+        this.setState({ allusers: allusers });
     }
     async loadUsers() {
         let allusers = await apiCalls.fetchURL("https://webdevbootcamp-mazenoncloud9.c9users.io:8080/loadallusers");
@@ -69,12 +69,14 @@ class Master extends Component {
 
     async addUser(val) {
         let newUser = await apiCalls.createUser(val);
+        console.log(newUser);
         this.setState({ allusers: [...this.state.allusers, newUser], user_id: newUser._id, firstname: newUser.firstname, lastname: newUser.lastname })
 
     }
 
     async editUser(val) {
         let editUser = await apiCalls.createUser(val);
+        console.log(editUser);
         this.setState({ user_id: editUser._id, firstname: editUser.firstname, lastname: editUser.lastname });
 
         for (var i = 0; i < this.state.allusers.length; i++) {
@@ -97,10 +99,10 @@ class Master extends Component {
             return (<option value={myUsers._id}>{myUsers.firstname} {myUsers.lastname} </option>)
         })
 
-    };
+    }
 
     afterSetStateFinished() {
-        console.log(this.state.user_id)
+
         if (this.state.user_id) {
 
             _.map(this.state.allusers, myUser => {
