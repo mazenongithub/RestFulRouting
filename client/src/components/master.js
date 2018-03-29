@@ -56,7 +56,8 @@ class Master extends Component {
         this.setState({ allusers: allusers });
     }
     async loadUsers() {
-        let allusers = await apiCalls.fetchURL("https://webdevbootcamp-mazenoncloud9.c9users.io:8080/loadallusers");
+        //
+        let allusers = await apiCalls.fetchURL();
         console.log(allusers);
         let allmyusers = {};
         allusers.map((myusers) => {

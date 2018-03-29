@@ -1,6 +1,8 @@
 /* global fetch */
 /* global Headers */
 export async function fetchURL(APIURL) {
+    //https://webdevbootcamp-mazenoncloud9.c9users.io:8080
+    var APIURL = "/loadallusers"
     return fetch(APIURL)
         .then(resp => {
             if (!resp.ok) {
@@ -19,7 +21,8 @@ export async function fetchURL(APIURL) {
         })
 }
 export async function deleteUser(user_id) {
-    const deleteURL = "https://webdevbootcamp-mazenoncloud9.c9users.io:8080/restfulrouting/" + user_id + "/distroy";
+    //https://webdevbootcamp-mazenoncloud9.c9users.io:8080
+    const deleteURL = "/restfulrouting/" + user_id + "/distroy";
     return fetch(deleteURL, {
             method: 'post'
         })
@@ -43,10 +46,12 @@ export async function deleteUser(user_id) {
 export async function createUser(val) {
     var APIURL;
     if (!val._id) {
-        APIURL = "https://webdevbootcamp-mazenoncloud9.c9users.io:8080/RestFulRouting"
+        //https://webdevbootcamp-mazenoncloud9.c9users.io:8080
+        APIURL = "/RestFulRouting"
     }
     else {
-        APIURL = "https://webdevbootcamp-mazenoncloud9.c9users.io:8080/restfulrouting/" + val._id + "/edit"
+        //https://webdevbootcamp-mazenoncloud9.c9users.io:8080
+        APIURL = "/restfulrouting/" + val._id + "/edit"
     }
 
     return fetch(APIURL, {
