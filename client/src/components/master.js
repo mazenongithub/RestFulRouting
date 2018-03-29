@@ -63,7 +63,17 @@ class Master extends Component {
         let editUser = await apiCalls.createUser(val);
         this.setState({ user_id: editUser._id, firstname: editUser.firstname, lastname: editUser.lastname });
 
+        for (var i = 0; i < this.state.allusers.length; i++) {
+            if (this.state.allusers[i]._id === this.state.user_id) {
 
+                this.state.allusers[i].firstname = this.state.firstname;
+                this.state.allusers[i].lastname = this.state.lastname;
+
+            }
+
+        }
+
+        this.setState({ allusers: this.state.allusers })
 
     }
 
