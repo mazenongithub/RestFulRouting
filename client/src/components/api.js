@@ -18,6 +18,27 @@ export async function fetchURL(APIURL) {
             return resp.json();
         })
 }
+export async function deleteUser(user_id) {
+    const deleteURL = "https://webdevbootcamp-mazenoncloud9.c9users.io:8080/restfulrouting/" + user_id + "/distroy";
+    return fetch(deleteURL, {
+            method: 'post'
+        })
+        .then(resp => {
+            if (!resp.ok) {
+                if (resp.status >= 400 && resp.status < 500) {
+                    return resp.json().then(data => {
+                        let err = { errorMessage: data.message };
+                        throw err;
+                    })
+                }
+                else {
+                    let err = { errorMessage: 'Please try again later, server is not responding' };
+                    throw err;
+                }
+            }
+            return resp.json();
+        })
+}
 
 export async function createUser(val) {
     var APIURL;

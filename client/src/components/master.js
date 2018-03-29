@@ -12,6 +12,7 @@ class Master extends Component {
             lastname: ''
         }
         this.handleClick = this.handleClick.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
 
     }
 
@@ -39,6 +40,19 @@ class Master extends Component {
             //alert(values.firstname);
             this.addUser(values);
         }
+
+    }
+
+    handleDelete() {
+        var user_id = this.state.user_id;
+        this.deleteUser(user_id);
+        //alert("delete ")
+    }
+
+    async deleteUser(user_id) {
+        let deleteUser = await apiCalls.deleteUser(user_id);
+        console.log(deleteUser)
+        this.setState({ firstname: '', lastname: "", user_id: "" });
 
     }
     async loadUsers() {
@@ -133,7 +147,7 @@ class Master extends Component {
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><button onClick={this.handleClick}> Insert/Update </button> <input type="button" value="Delete" id="btndelete" /></td>
+    <td><button onClick={this.handleClick}> Insert/Update </button> <input type="button" value="Delete" id="btndelete" onClick={this.handleDelete} /></td>
   </tr>
   </tbody>
 </table>
